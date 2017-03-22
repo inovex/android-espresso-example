@@ -30,9 +30,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
 
     // UI references.
-    @BindView(R.id.email)
+    @BindView(R.id.edittext_email)
     EditText mEmailView;
-    @BindView(R.id.password)
+    @BindView(R.id.edittext_password)
     EditText mPasswordView;
     private Disposable loginSubscription;
 
@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    @OnClick(R.id.email_sign_in_button)
+    @OnClick(R.id.button_sign_in)
     void attemptLogin() {
         // Reset errors.
         mEmailView.setError(null);

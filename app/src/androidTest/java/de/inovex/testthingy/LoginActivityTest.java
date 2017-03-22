@@ -25,6 +25,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static de.inovex.testthingy.RestServiceTestHelper.getStringFromFile;
+import static de.inovex.testthingy.TestHelper.getStringFromFile;
 import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
@@ -51,39 +52,38 @@ public class LoginActivityTest {
         MockResponse loginResponse = new MockResponse().setResponseCode(403);
         server.enqueue(loginResponse);
 
-        ViewInteraction appCompatEditText = onView(withId(R.id.email));
-        appCompatEditText.perform(scrollTo(), replaceText("as@asd.de"), closeSoftKeyboard());
+        ViewInteraction emailEditText = onView(withId(R.id.edittext_email));
+        emailEditText.perform(scrollTo(), replaceText("as@asd.de"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.password));
-        appCompatEditText2.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
+        ViewInteraction pwEditText = onView(withId(R.id.edittext_password));
+        pwEditText.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton = onView(withId(R.id.email_sign_in_button));
-        appCompatButton.perform(scrollTo(), click());
+        ViewInteraction signInButton = onView(withId(R.id.button_sign_in));
+        signInButton.perform(scrollTo(), click());
 
-        ViewInteraction textView = onView(allOf(withId(R.id.alertTitle), isDisplayed()));
-        textView.check(matches(withText(R.string.dialog_title_error)));
+        ViewInteraction dialogTitle = onView(allOf(withId(R.id.alertTitle), isDisplayed()));
+        dialogTitle.check(matches(withText(R.string.dialog_title_error)));
 
-        ViewInteraction textView2 = onView(allOf(withId(android.R.id.message), isDisplayed()));
-        textView2.check(matches(withText(R.string.dialog_message_login_failed)));
+        ViewInteraction dialogText = onView(allOf(withId(android.R.id.message), isDisplayed()));
+        dialogText.check(matches(withText(R.string.dialog_message_login_failed)));
     }
 
     @Test
     public void login_success_should_lead_to_mainactivity_and_display_correct_string() throws Exception {
         MockResponse loginResponse = new MockResponse().setResponseCode(200);
         MockResponse someresponse = new MockResponse().setResponseCode(200)
-                .setBody(getStringFromFile(InstrumentationRegistry.getContext(),
-                        "some_response_200_ok_true.json"));
+                .setBody("{\"isAndroidTestingFunny\": true}");
         server.enqueue(loginResponse);
         server.enqueue(someresponse);
 
-        ViewInteraction appCompatEditText = onView(withId(R.id.email));
-        appCompatEditText.perform(scrollTo(), replaceText("as@asd.de"), closeSoftKeyboard());
+        ViewInteraction emailEditTxt = onView(withId(R.id.edittext_email));
+        emailEditTxt.perform(scrollTo(), replaceText("as@asd.de"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.password));
-        appCompatEditText2.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
+        ViewInteraction pwEditText = onView(withId(R.id.edittext_password));
+        pwEditText.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton = onView(withId(R.id.email_sign_in_button));
-        appCompatButton.perform(scrollTo(), click());
+        ViewInteraction signInButton = onView(withId(R.id.button_sign_in));
+        signInButton.perform(scrollTo(), click());
 
         ViewInteraction textViewWithTextFromApi = onView(allOf(withId(R.id.textView), isDisplayed()));
         textViewWithTextFromApi.check(matches(withText("Android testing is funny: true")));
@@ -98,13 +98,13 @@ public class LoginActivityTest {
         server.enqueue(loginResponse);
         server.enqueue(someresponse);
 
-        ViewInteraction appCompatEditText = onView(withId(R.id.email));
+        ViewInteraction appCompatEditText = onView(withId(R.id.edittext_email));
         appCompatEditText.perform(scrollTo(), replaceText("as@asd.de"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.password));
+        ViewInteraction appCompatEditText2 = onView(withId(R.id.edittext_password));
         appCompatEditText2.perform(scrollTo(), replaceText("12345"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton = onView(withId(R.id.email_sign_in_button));
+        ViewInteraction appCompatButton = onView(withId(R.id.button_sign_in));
         appCompatButton.perform(scrollTo(), click());
 
         ViewInteraction textViewWithTextFromApi = onView(allOf(withId(R.id.textView), isDisplayed()));

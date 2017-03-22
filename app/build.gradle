@@ -23,7 +23,7 @@ android {
         app {
 
         }
-        ui_tests {
+        uitests {
             buildConfigField 'String', 'HOST', '"http://127.0.0.1:43210/api/"'
         }
     }

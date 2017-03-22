@@ -2,10 +2,12 @@
 
 This repository contains some examples and helper functions to run espresso tests on your device.
 
+It's used for a blog entry on http://www.inovex.de (written in german)
+
 ## Steps
 1. Disable Animations within the Developer Options for your test device
-2. `gradle connectedUitestsDebugAndroidTest`
-3. There is no third step
+2. Run the tests with flavor Uitests: `gradle connectedUitestsDebugAndroidTest`
+3. That's it
 
 ## License
 

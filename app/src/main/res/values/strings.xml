@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TestThingy</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="ok">OK</string>
+    <string name="dialog_message_login_failed">login does not work :(</string>
+    <string name="android_testing_is_funny">Android testing is funny: %1$b</string>
+</resources>

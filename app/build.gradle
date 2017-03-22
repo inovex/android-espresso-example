@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField 'String', 'HOST', '"http://some-random-api.de/api"'
+        buildConfigField 'String', 'HOST', '"http://some-random-api.de/api/"'
     }
     buildTypes {
         release {
@@ -23,6 +23,7 @@ android {
         app {
 
         }
+        //Add flavor which will be used for running ui tests with the mock web server
         uitests {
             buildConfigField 'String', 'HOST', '"http://127.0.0.1:43210/api/"'
         }

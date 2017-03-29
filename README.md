@@ -2,7 +2,7 @@
 
 This repository contains some examples and helper functions to run espresso tests on your device.
 
-It's used for a blog entry on http://www.inovex.de (written in german)
+It's used for a blog entry on https://www.inovex.de/blog/android-ui-tests/ (german)
 
 ## Steps
 1. Disable Animations within the Developer Options for your test device
